@@ -1,0 +1,50 @@
+## SCRIPTS SQL
+
+--> Aula 06 - recebendo edição atráves do SQL
+
+        $sql = "SELECT 
+        idContato,
+        upper(nomeContato) as nomeContato,
+        lower(emailContato) as emailContato,
+        telefoneContato,
+        upper(enderecoContato) as enderecoContato,
+        CASE 
+            WHEN sexoContato='F' THEN 'FEMININO'
+            WHEN sexoContato='M' THEN 'MASCULINO'
+             WHEN sexoContato='I' THEN 'IDEFINIDO'
+        ELSE 
+            'NÃO ESPECIFICADO'
+        END as sexoContato,
+        DATE_FORMAT(dataNascContato, '%d/%m/%Y') as dataNascContato             
+        FROM tbcontatos";
+
+--> Aula 09 - consultas 
+
+SELECT * FROM tbcontatos WHERE nomeContato LIKE '%Robson'; 
+
+SELECT * FROM tbcontatos WHERE nomeContato LIKE '%Jose%'; 
+
+SELECT * FROM tbcontatos WHERE 
+idContato = Luan or 
+nomeContato LIKE '%Luana%'; 
+
+--> Aula 10 - páginação (codigo original)
+
+        $sql = "SELECT 
+        idContato,
+        upper(nomeContato) as nomeContato,
+        lower(emailContato) as emailContato,
+        telefoneContato,
+        upper(enderecoContato) as enderecoContato,
+        CASE 
+            WHEN sexoContato='F' THEN 'FEMININO'
+            WHEN sexoContato='M' THEN 'MASCULINO'
+             WHEN sexoContato='I' THEN 'IDEFINIDO'
+        ELSE 
+            'NÃO ESPECIFICADO'
+        END as sexoContato,
+        DATE_FORMAT(dataNascContato, '%d/%m/%Y') as dataNascContato             
+        FROM tbcontatos 
+        WHERE idContato='{$txt_pesquisa}' or nomeContato LIKE '%{$txt_pesquisa}%' or emailContato LIKE '%$txt_pesquisa%'
+        ORDER BY nomeContato ASC
+        ";
