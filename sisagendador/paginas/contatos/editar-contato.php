@@ -18,8 +18,8 @@
             <div class="mb-3 col-2">
                 <label for="idContato" class="form-label">ID</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-pencil-fill"></i></span>
-                    <input type="text" class="form-control" name="idContato" value="<?=$dados["idContato"] ?>">
+                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                    <input type="text" class="form-control" name="idContato" value="<?=$dados["idContato"] ?>" readonly>
                 </div>
             </div>
 
@@ -66,9 +66,9 @@
                 <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
                     <select name="sexoContato" id="sexoContato" class="form-control">
-                        <option selected><?=$dados["sexoContato"] ?></option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
+                        <option <?php echo ($dados['sexoContato'] == '') ? 'selected' : '' ?> >Selecione o genero do Contato</option>
+                        <option <?php echo ($dados['sexoContato'] == 'M') ? 'selected' : '' ?> value="M">Masculino</option>
+                        <option <?php echo ($dados['sexoContato'] == 'F') ? 'selected' : '' ?> value="F">Feminino</option>
                     </select>
                 </div>
             </div>
